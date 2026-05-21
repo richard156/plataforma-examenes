@@ -2,56 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Simulacro Docente - Concurso Magisterial</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Importar Supabase JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Simulacro Docente | Prepárate para el concurso</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome (opcional para iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Pantalla de login/registro -->
-        <div id="authScreen" class="screen active">
-            <h2>🔐 Acceso al Simulacro</h2>
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="login">Iniciar Sesión</button>
-                <button class="tab-btn" data-tab="register">Registrarse</button>
+    <div class="app-container">
+        <!-- Cabecera -->
+        <header class="main-header">
+            <div class="logo">
+                <img src="assets/img/logo.svg" alt="Logo Simulacro" class="logo-img">
+                <span>Simulacro Docente</span>
             </div>
-            <div id="loginForm" class="form-container active">
-                <input type="email" id="loginEmail" placeholder="Correo electrónico" autocomplete="email">
-                <input type="password" id="loginPassword" placeholder="Contraseña" autocomplete="current-password">
-                <button id="btnLogin">Ingresar</button>
-                <p class="error-msg" id="loginError"></p>
+            <div class="user-info">
+                <span id="userName" class="user-name">Invitado</span>
+                <button id="logoutBtn" class="btn-icon" aria-label="Cerrar sesión"><i class="fas fa-sign-out-alt"></i></button>
             </div>
-            <div id="registerForm" class="form-container">
-                <input type="email" id="regEmail" placeholder="Correo electrónico" autocomplete="email">
-                <input type="password" id="regPassword" placeholder="Contraseña (mínimo 6 caracteres)" autocomplete="new-password">
-                <button id="btnRegister">Crear cuenta</button>
-                <p class="error-msg" id="regError"></p>
-            </div>
-        </div>
+        </header>
 
-        <!-- Pantalla del simulacro de preguntas -->
-        <div id="quizScreen" class="screen">
-            <div class="quiz-header">
-                <span>👤 <span id="userEmail"></span></span>
-                <span>📊 Pregunta <span id="currentQ">1</span> de <span id="totalQ">0</span></span>
-                <button id="logoutBtn">Salir</button>
+        <!-- Contenido principal -->
+        <main class="quiz-area">
+            <!-- Barra de progreso -->
+            <div class="progress-wrapper">
+                <div class="progress-bar-container">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span id="currentQuestionIndex">1</span> / <span id="totalQuestions">10</span>
+                </div>
             </div>
-            <div class="progress-bar">
-                <div id="progressFill"></div>
+
+            <!-- Tarjeta de pregunta -->
+            <div class="card question-card">
+                <h2 id="questionText" class="question-text">Cargando pregunta...</h2>
+                <div class="options-list" id="optionsContainer">
+                    <!-- Las opciones se generarán dinámicamente con JS -->
+                </div>
+                <div id="feedback" class="feedback-area"></div>
+                <div class="action-buttons">
+                    <button id="checkAnswerBtn" class="btn btn-primary"><i class="fas fa-check"></i> Verificar</button>
+                    <button id="nextQuestionBtn" class="btn btn-secondary" disabled><i class="fas fa-arrow-right"></i> Siguiente</button>
+                </div>
             </div>
-            <div id="questionText" class="question"></div>
-            <div id="optionsContainer" class="options"></div>
-            <div id="feedback" class="feedback"></div>
-            <div class="nav-buttons">
-                <button id="prevBtn" disabled>◀ Anterior</button>
-                <button id="nextBtn" disabled>Siguiente ▶</button>
+
+            <!-- Banner de pago (oculto inicialmente) -->
+            <div id="paymentBanner" class="payment-banner hidden">
+                <p><i class="fas fa-star"></i> Has completado las preguntas gratuitas. <button id="unlockBtn" class="btn-accent">Desbloquear todo por S/19.90</button></p>
             </div>
-            <div id="quizStatus" class="quiz-status"></div>
-        </div>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="main-footer">
+            <p>&copy; 2025 Simulacro Docente. Todos los derechos reservados.</p>
+        </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>
