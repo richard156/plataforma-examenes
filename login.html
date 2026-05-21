@@ -1,5 +1,60 @@
-<form id="loginForm">
-    <input type="email" id="email" placeholder="Correo" required>
-    <input type="password" id="password" placeholder="Contraseña" required>
-    <button type="submit">Ingresar / Registrarse</button>
-</form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Simulacro Docente</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Estilos rápidos para el formulario */
+        .login-container {
+            max-width: 400px;
+            margin: 3rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .login-container input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #4F46E5;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        .message.error { background: #fee2e2; color: #991b1b; }
+        .message.success { background: #d1fae5; color: #065f46; }
+        .message.info { background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>🔐 Acceso al Simulacro</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Ingresar / Registrarse</button>
+        </form>
+        <div id="message" class="message" style="display:none;"></div>
+        <p style="margin-top:1rem; font-size:0.8rem;">Si es tu primera vez, se creará una cuenta automáticamente.</p>
+    </div>
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
